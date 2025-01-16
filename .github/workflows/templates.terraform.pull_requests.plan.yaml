@@ -97,7 +97,7 @@ jobs:
           TF_IN_AUTOMATION: yes
         run: terraform init -no-color -backend=false
         working-directory: ${{ inputs.terraform_workdir }}
-      - uses: marocchino/sticky-pull-request-comment@efaaab3fd41a9c3de579aba759d2552635e590fd # v2.8.0
+      - uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728 # v2.9.1
         if: failure() && steps.init.outcome == 'failure'
         with:
           recreate: true
@@ -124,7 +124,7 @@ jobs:
           TF_IN_AUTOMATION: yes
         run: terraform plan -input=false -no-color -parallelism=30 -compact-warnings
         working-directory: ${{ inputs.terraform_workdir }}
-      - uses: marocchino/sticky-pull-request-comment@efaaab3fd41a9c3de579aba759d2552635e590fd # v2.8.0
+      - uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728 # v2.9.1
         if: failure() && steps.plan.outcome == 'failure'
         with:
           recreate: true
@@ -143,7 +143,7 @@ jobs:
             <br/>
 
             > _Report based on commit ${{ github.sha }} (authored by **@${{ github.actor }}**).  See [`actions#${{ github.run_id }}`](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for more details._
-      - uses: marocchino/sticky-pull-request-comment@efaaab3fd41a9c3de579aba759d2552635e590fd # v2.8.0
+      - uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728 # v2.9.1
         if: success()
         with:
           recreate: true
